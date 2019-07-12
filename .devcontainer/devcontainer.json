@@ -10,5 +10,5 @@
         "wallabyjs.quokka-vscode"
     ],
     "postCreateCommand": "yarn",
-    "shutdownAction": "none"
+    "shutdownAction": "stopCompose"
 }
