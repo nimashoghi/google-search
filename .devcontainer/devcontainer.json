@@ -1,0 +1,14 @@
+{
+    "name": "Node.js (latest LTS) & TypeScript",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "google_search",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "visualstudioexptteam.vscodeintellicode",
+        "esbenp.prettier-vscode",
+        "wallabyjs.quokka-vscode"
+    ],
+    "postCreateCommand": "yarn",
+    "shutdownAction": "none"
+}

@@ -1,66 +1,79 @@
 {
-  "name": "google-search",
-  "displayName": "google-search",
-  "description": "Google your doubts, errors and confusions!",
-  "version": "0.0.1",
-  "publisher": "kameshkotwani",
-  "engines": {
-    "vscode": "^1.31.0"
-  },
-  "author": {
-    "name": "Kamesh Kotwani",
-    "url": "https://www.github.com/kameshkotwani"
-  },
-  "icon": "resources/icon.png",
-  "homepage": "https://www.github.com/kameshkotwani/google-search",
-  "repository": {
-    "type": "git",
-    "url": "https://www.github.com/kameshkotwani/google-search"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:extension.googleSearch"
-  ],
-  "main": "./extension.js",
-  "contributes": {
-    "menus": {
-      "editor/context": [
-        {
-          "when": "editorHasSelection",
-          "command": "extension.googleSearch",
-          "group": "navigation"
-        }
-      ]
+    "name": "google-search",
+    "displayName": "Google Search",
+    "description": "VSC Google search feature",
+    "version": "0.0.1",
+    "publisher": "nimashoghi",
+    "engines": {
+        "vscode": "^1.31.0"
     },
-    "commands": [
-      {
-        "command": "extension.googleSearch",
-        "title": "Google this"
-      }
+    "author": {
+        "name": "Nima Shoghi",
+        "url": "https://www.github.com/nimashoghi"
+    },
+    "icon": "resources/icon.png",
+    "homepage": "https://www.github.com/nimashoghi/google-search",
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/nimashoghi/google-search"
+    },
+    "categories": [
+        "Other"
     ],
-    "configuration": {
-      "title": "Google Search Config",
-      "type": "object",
-      "properties": {
-        "googleSearch.QueryTemplate": {
-          "type": "string",
-          "default": "https://www.google.com/search?q=%SELECTION%",
-          "description": "Search Query"
+    "activationEvents": [
+        "*"
+    ],
+    "main": "dist/index.js",
+    "contributes": {
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "google-search.search",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title": [
+                {
+                    "when": "editorTextFocus",
+                    "command": "google-search.search",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "icon": "resources/icon.png",
+                "command": "google-search.search",
+                "title": "Google Search..."
+            }
+        ],
+        "configuration": {
+            "title": "Google Search Config",
+            "type": "object",
+            "properties": {
+                "google-search.template": {
+                    "type": "string",
+                    "default": "https://www.google.com/search?q=%QUERY%",
+                    "description": "Search Query"
+                }
+            }
         }
-      }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "build": "tsc -b .",
+        "watch": "tsc -b --watch ."
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.6.2",
+        "@typescript-eslint/eslint-plugin": "^1.12.0",
+        "@typescript-eslint/parser": "^1.12.0",
+        "eslint": "^6.0.1",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "prettier": "^1.18.2",
+        "typescript": "^3.5.3",
+        "vscode": "^1.1.35"
     }
-  },
-  "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "typescript": "^3.3.1",
-    "vscode": "^1.1.28",
-    "eslint": "^5.13.0",
-    "@types/node": "^10.12.21",
-    "@types/mocha": "^2.2.42"
-  }
 }
